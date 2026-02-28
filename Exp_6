@@ -1,0 +1,43 @@
+SELECT
+    e.empno,
+    e.ename,
+    CASE e.deptno
+        WHEN 10 THEN 'RESEARCH'
+        WHEN 20 THEN 'ACCOUNTING'
+        WHEN 30 THEN 'SALES'
+        WHEN 40 THEN 'OPERATIONS'
+    END AS department
+FROM employee e;
+
+SELECT DATEDIFF(CURDATE(), '2000-01-01') AS age_in_days;
+
+SELECT TIMESTAMPDIFF(MONTH, '2000-01-01', CURDATE()) AS age_in_months;
+
+SELECT DATE_FORMAT('1997-08-15', '%D %M %W %Y') AS formatted_date;
+
+SELECT CONCAT(
+        ename,' has joined the company on ',
+        DATE_FORMAT(hiredate,'%W %D %M %Y')
+    ) AS joining_info FROM employee
+WHERE ename = 'SCOTT';
+
+SELECT DATE_ADD(CURDATE(), INTERVAL (7 - DAYOFWEEK(CURDATE())) DAY) AS next_saturday;
+
+SELECT CURTIME();
+
+SELECT DATE_SUB(CURDATE(), INTERVAL 3 MONTH);
+
+SELECT ename, hiredate FROM employee
+WHERE MONTH(hiredate) = 12;
+
+SELECT ename FROM employee
+WHERE LEFT(YEAR(hiredate),2) = RIGHT(sal,2);
+
+SELECT ename FROM employee
+WHERE sal * 0.10 = YEAR(hiredate);
+
+SELECT ename, hiredate FROM employee
+WHERE DAY(hiredate) < 15;
+
+SELECT ename FROM employee
+WHERE DAY(hiredate) = deptno;
