@@ -1,0 +1,24 @@
+SELECT DISTINCT job FROM Employee;
+SELECT * FROM Employee WHERE deptno = 30;
+SELECT deptno FROM department WHERE deptno > 20;
+
+SELECT * FROM employee
+WHERE deptno = 30 AND job IN ('MANAGER','CLERK');
+
+SELECT empno, ename, deptno FROM employee
+WHERE job = 'CLERK';
+
+SELECT * FROM employee
+WHERE job = 'MANAGER' AND deptno <> 30;
+
+SELECT * FROM employee
+WHERE deptno = 10 AND job NOT IN ('MANAGER','CLERK');
+
+SELECT ename, job, sal FROM employee
+WHERE sal BETWEEN 1200 AND 1400;
+
+SELECT ename, deptno FROM employee
+WHERE job IN ('CLERK','ANALYST','SALESMAN');
+
+SELECT ename, deptno FROM employee
+WHERE ename LIKE 'M%';
