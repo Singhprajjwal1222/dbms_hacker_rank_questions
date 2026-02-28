@@ -1,0 +1,49 @@
+SELECT DATEDIFF(
+    MAKEDATE(YEAR(CURDATE()) + 1, 1),
+    CURDATE()
+) AS days_remaining;
+
+SELECT
+    MAX(sal) AS highest_salary,
+    MIN(sal) AS lowest_salary,
+    MAX(sal) - MIN(sal) AS difference
+FROM employee;
+
+SELECT ename, sal, comm FROM employee
+WHERE comm > sal * 0.25;
+
+SELECT ename, CONCAT('$', sal) AS salary FROM employee;
+
+SELECT
+    job,
+    SUM(CASE WHEN deptno = 10 THEN sal ELSE 0 END) AS dept10,
+    SUM(CASE WHEN deptno = 20 THEN sal ELSE 0 END) AS dept20,
+    SUM(CASE WHEN deptno = 30 THEN sal ELSE 0 END) AS dept30,
+    SUM(CASE WHEN deptno = 40 THEN sal ELSE 0 END) AS dept40,
+    SUM(sal) AS total_salary
+FROM employee
+GROUP BY job;
+
+SELECT
+    COUNT(*) AS total_employees,
+    SUM(CASE WHEN YEAR(hiredate)=1980 THEN 1 ELSE 0 END) AS y1980,
+    SUM(CASE WHEN YEAR(hiredate)=1981 THEN 1 ELSE 0 END) AS y1981,
+    SUM(CASE WHEN YEAR(hiredate)=1982 THEN 1 ELSE 0 END) AS y1982,
+    SUM(CASE WHEN YEAR(hiredate)=1983 THEN 1 ELSE 0 END) AS y1983
+FROM employee;
+
+SELECT DATE_SUB(
+    LAST_DAY('2026-02-01'),
+    INTERVAL (DAYOFWEEK(LAST_DAY('2026-02-01')) - 1) DAY
+) AS last_sunday;
+
+SELECT deptno, COUNT(*) AS total_employees
+FROM employee
+GROUP BY deptno;
+
+SELECT job, COUNT(*) AS total_employees
+FROM employee
+
+SELECT deptno, SUM(sal) AS total_salary FROM employee
+GROUP BY deptno;
+GROUP BY job;
